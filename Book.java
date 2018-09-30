@@ -3,15 +3,15 @@ package inheritanceLab;
 public class Book {
 	protected String author;
 	protected String title;
-	protected int isbn;
+	protected String isbn;
 	
-	Book(){
+	public Book(){
 		author = "";
 		title = "";
-		isbn = 0;
+		isbn = " ";
 	}
 	
-	Book(String author_, String title_, int isbn_){
+	Book(String author_, String title_, String isbn_){
 		author = author_;
 		title = title_;
 		isbn = isbn_;		
@@ -26,7 +26,7 @@ public class Book {
 		 return title;
 	 }
 	 
-	 public int getIsbn() {
+	 public String getIsbn() {
 		 return isbn;
 	 }
 	 
@@ -39,7 +39,7 @@ public class Book {
 		 title = titl;
 	 }
 	 
-	 public void setIsbn(int i) {
+	 public void setIsbn(String i) {
 		 isbn = i;
 	 }
 	 
