@@ -1,7 +1,7 @@
 package inheritanceLab;
 
 public abstract class LibraryBook extends Book implements Comparable <LibraryBook>{
-	private String callNumber; 
+	protected String callNumber; 
 	
 	public LibraryBook(String author, String title, String num, String callNum){
 		super(author, title, num); 
@@ -13,7 +13,7 @@ public abstract class LibraryBook extends Book implements Comparable <LibraryBoo
 		return callNumber;  
 	}
 	
-	// Setter
+	// SetterLibraryBook libro
 	public void setCallNumber(String callNum) {
 		callNumber = callNum; 
 	}
@@ -21,6 +21,7 @@ public abstract class LibraryBook extends Book implements Comparable <LibraryBoo
 	abstract void checkout (String patron, String dueDate);	
 	abstract void returned ();
 	abstract String circulationStatus();
+	
 	/** 
 	 * implementation of Comparable's compareTo method
 	 * @param libro:  Library object being compared
@@ -28,7 +29,9 @@ public abstract class LibraryBook extends Book implements Comparable <LibraryBoo
 	 *         < 0 if call number of this comes before call number of libro
 	 *         > 0 otherwise
 	 */
-	public abstract int compareTo (LibraryBook libro);
+	public int compareTo (LibraryBook libro) {
+		return isbn.compareTo(libro.getIsbn());
+		}
 	
 	
 	

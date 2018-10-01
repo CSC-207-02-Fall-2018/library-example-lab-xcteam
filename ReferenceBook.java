@@ -34,24 +34,6 @@ public class ReferenceBook extends LibraryBook{
 		return "Non-circulating reference book.";
 	}
 	
-	/** 
-	 * implementation of Comparable's compareTo method
-	 * @param libro:  Library object being compared
-	 * @return 0 if call numbers of this and libro match
-	 *         < 0 if call number of this comes before call number of libro
-	 *         > 0 otherwise
-	 */
-	public int compareTo (LibraryBook libro) {
-		if (getIsbn().equals(libro.getIsbn())) {
-		return 0;
-		} else if (getIsbn() < libro.getIsbn()) {
-			return -1; 
-		} else {
-		return 1;
-		}
-	}
-	
-	
 	public String toString () {
 		return super.toString() + "\n Collection: "+collection;
 	}

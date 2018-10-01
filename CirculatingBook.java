@@ -29,6 +29,8 @@ public class CirculatingBook extends LibraryBook{
 	
 	// Other Methods 
 	
+
+	
 	public void checkout(String name, String date) {
 		currentHolder = name;
 		dueDate = date;
