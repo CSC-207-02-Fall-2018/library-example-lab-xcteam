@@ -45,7 +45,7 @@ public class CirculatingBook extends LibraryBook{
 		if (getCurrentHolder() == null) {
 			return "Book available on shelves.";
 		}
-		return "Book is checked out to: " + currentHolder 
+		return "Book is checked out to " + currentHolder 
 				+ ".\nBook due back by: " + dueDate;
 	}
 	
@@ -53,7 +53,7 @@ public class CirculatingBook extends LibraryBook{
 		if (getCurrentHolder() == null) {
 			return super.toString();
 		} else {
-			return super.toString() + "Book is checked out to: " 
+			return super.toString() + "Book is checked out to " 
 		+ currentHolder + ".\nBook due back by: " + dueDate;
 		}
 		

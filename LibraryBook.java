@@ -30,7 +30,7 @@ public abstract class LibraryBook extends Book implements Comparable <LibraryBoo
 	 *         > 0 otherwise
 	 */
 	public int compareTo (LibraryBook libro) {
-		return isbn.compareTo(libro.getIsbn());
+		return callNumber.compareTo(libro.getCallNumber());
 		}
 	
 	
@@ -41,7 +41,7 @@ public abstract class LibraryBook extends Book implements Comparable <LibraryBoo
 	 */
 	
 	public String toString () {
-		return super.toString()+"\nCall Number: "+callNumber; 
+		return super.toString()+"\nCirculation status: "+this.circulationStatus()+"\nCall Number: "+callNumber; 
 	}
 	
 }
