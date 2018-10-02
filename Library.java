@@ -1,11 +1,34 @@
+/*
+ * This class is an augmentation of the original implementation of the Library testing class
+ * that was provided by Henry Walker. We have edited this class' methods to take in 
+ * objects with type LibraryBook instead of just one field of the library book. 
+ * We did this because at first we were unsure what the problem was with the testing file 
+ * (we found out we needed to change the implementation of compareTo back in LibraryBook.java
+ * to utilize callNumber(s) instead of isbn. In this implementation of library we have added
+ * additional testing to the original testing file which included: 
+ * checking out and returning a book that is already checked out
+ * returning a book that has not been checked out
+ * checking out books prior to sorting
+ * checking out a book that does not exist 
+ */
+
 package inheritanceLab;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
+/**
+ * This class has some of the methods a library would use to perform basic tasks.
+ * @author Steffie Ochoa
+ * @author Carter Markegard
+ *
+ */
 public class Library {
 	ArrayList<LibraryBook> bookList;
 
+	/**
+	 * A constructor for the library. Initializes an ArrayList to store the books in.
+	 */
 	Library () {
 		bookList = new ArrayList<LibraryBook> ();
 	}
@@ -124,12 +147,11 @@ public class Library {
 				"0-86720-206-8", "QA76.W1855");
 
 		//Fake Book
-		CirculatingBook  tap =  new CirculatingBook ("Henry M. Walker",
-				"The Tao of Computing",
-				"0-86720-206", "5");
+		CirculatingBook  tap =  new CirculatingBook ("Henry M. Gwalker",
+				"The Tap of Computing",
+				"0-86720-206420", "5");
 
-		//Should fail because the library has not been sorted.
-		lib.checkout("Donald Duck", "March 1, 2012", fortran);
+
 
 		lib.addBook(basic);
 		lib.addBook(experiments);
@@ -142,6 +164,19 @@ public class Library {
 		lib.addBook(limit);
 		lib.addBook(tao);
 
+		/*Both Checkout and returned use binary search to verify if
+		 * a book is in the library. Seeing as how the library has not
+		 * been sorted, we would expect the following two calls to fail.
+		 * However, both methods still work regardless and Fortran is 
+		 * checked out and returned like normal. No errors here.
+		 */
+		System.out.println("a."); //These lettered and numbered print statements
+		//add clarity to the output and allow humans to identify where an error 
+		//Occurred.
+		lib.checkout("Donald Duck", "March 1, 2012", fortran);
+		System.out.println("b.");
+		lib.returned(fortran);
+
 		// sort books by call number
 		lib.sortLibrary();
 
@@ -151,27 +186,28 @@ public class Library {
 		// some users check out and return books
 		lib.checkout("Donald Duck", "March 1, 2012", fortran);
 		lib.checkout("Donald Duck", "March 12, 2012", pascal);
-		lib.checkout("Donald Duck", "March 6, 2012", experiments);
+		lib.checkout("Donald Duck", "March 6, 2012", experiments);//Should fail
 		lib.checkout("Minnie Mouse", "April 1, 2012", edMedia);
-		System.out.println("a.");
+		System.out.println("c.");
 		lib.checkout("Mickie Mouse", "April 21, 2012", edMedia); //Checks to see
 		//what happens if we check out a checked-out book. After we found this
 		//didn't work we modified the method checkedOut to print an "error".
 		lib.checkout("Goofy", "February 28, 2012", tap); // should fail
 
 		System.out.println("1.");
-		lib.returned(pascal);
+		lib.returned(pascal);//Test for turning in a checked out book; works.
 		System.out.println("2.");
-		lib.returned(experiments);
+		lib.returned(experiments);//Test for returning z reference book; works.
 		System.out.println("3.");
 		lib.returned(limit);//Checking to see what happens when we return book
 		//that has not been checked out. Does nothing as expected.
 		System.out.println("4.");
 		lib.returned(tap);//Should fail, tap has not been added to the library.
 
-		lib.checkout("Goofy", "March 28, 2012", pascal);
+		lib.checkout("Goofy", "March 28, 2012", pascal);//Checking to see if we can
+		//checkout a book that has been successfully checked-out and returned; works.
 
 		// print final status of library
-		lib.printLibrary();		
+		lib.printLibrary();	
 	}
 }

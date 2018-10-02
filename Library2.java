@@ -6,6 +6,9 @@ import java.util.Collections;
 public class Library2 {
 	ArrayList<LibraryBook> bookList;
 	
+	/**
+	 * A constructor for the library. Initializes an ArrayList to store the books in.
+	 */
 	Library2 () {
 		bookList = new ArrayList<LibraryBook> ();
 	}
